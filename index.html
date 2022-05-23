@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/three@0.137.4/build/three.min.js"></script>
     <script src="https://unpkg.com/three@0.137.4/examples/js/controls/OrbitControls.js"></script>
-    <script src="https://unpkg.com/three@0.137.4/examples/js/loaders/OBJLoader.js"></script>
-    <title>Document</title>
+    <title>宇宙</title>
 </head>
 <body>
     <script>
@@ -29,8 +28,8 @@
 
             const controls = new THREE.OrbitControls(camera, document.body);
 
-            const directionalLightM = new THREE.DirectionalLight(0xffffff, 0.3);
-            directionalLightM.position.set(0, 10, -5);
+            const directionalLightM = new THREE.DirectionalLight(0xffffff, 0.4);
+            directionalLightM.position.set(-30, 30, 30);
             directionalLightM.castShadow = true;
 
             scene.add(directionalLightM);
@@ -48,50 +47,20 @@
             const axisHelper = new THREE.AxisHelper(2); //軸の長さ　X：赤、Y：緑、z：青
             scene.add(axisHelper);
 
-            //平面を作成
-            const planeGeometry = new THREE.PlaneGeometry(10,10);
-            //const planeMaterial = new THREE.MeshBasicMaterial({color: 0x00ff00});
-            const planeMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
-            const plane = new THREE.Mesh(planeGeometry,planeMaterial);
-            plane.receiveShadow = true; 
-            plane.rotation.set( -Math.PI/2, 0, 0 );
-            plane.position.set(0,-1.5,-2);
-            scene.add(plane);
-
-            // 箱を作成
-            const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
-            const boxMaterial = new THREE.MeshPhongMaterial({ color: 0xff0000 });
-            const box = new THREE.Mesh(boxGeometry, boxMaterial);
-            box.castShadow = true; //影ができる
-            box.position.set(1,0,0);
-            scene.add(box);
-            loader("models/obj");
-            loader("models/Skull_v3_L2.123c1407fc1e-ea5c-4cb9-9072-d28b8aba4c36");
+            let bgTexture = new THREE.TextureLoader().load("images/universe.jpg");
+            scene.background = bgTexture;
+     
             update();
 
             function update(){
                 renderer.render(scene, camera);
                 requestAnimationFrame(update);
 
+                
             }
         }
 
-        function loader(data){
-            //3Dモデルの読み込み
-            const loader = new THREE.OBJLoader();
-            loader.load(
-                data,
-                function ( object ) {
-                    scene.add( object );
-                },
-                function ( xhr ) {
-                    console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-                },
-                function ( error ) {
-                    console.log( 'An error happened' );
-                }
-            );
-        }
+        
     </script>
 </body>
 </html>

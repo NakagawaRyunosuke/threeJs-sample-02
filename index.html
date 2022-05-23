@@ -49,9 +49,6 @@
 
             //グループ作成
 
-            //背景
-            const bgTexture = new THREE.TextureLoader().load("images/universe.jpg");
-            scene.background = bgTexture;
             
             //地球作成
             const txLoader1  = new THREE.TextureLoader();
@@ -74,7 +71,7 @@
                 map:normalMap2
             });
             const moon = new THREE.Mesh(geometry2,material2);
-            moon.position.set(2,0,0);
+            moon.position.set(1,0,0);
             scene.add(moon);
 
             //太陽作成
@@ -86,7 +83,7 @@
                 map:normalMap3
             });
             const sun = new THREE.Mesh(geometry3,material3);
-            moon.position.set(6,0,0);
+            moon.position.set(3,0,0);
             scene.add(sun);
 
             update();

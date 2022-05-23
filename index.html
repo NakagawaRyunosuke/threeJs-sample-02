@@ -172,7 +172,7 @@
             let tires2 = [];
             for(let i = 0; i < 4; i++){
                 const cylinderGeometry = new THREE.CylinderGeometry( 0.3, 0.3, 0.1, 32 );
-                const cylinderMaterial = new THREE.MeshBasicMaterial( {color: 0x9e9e9e} );
+                const cylinderMaterial = new THREE.MeshToonMaterial( {color: 0x9e9e9e} );
                 const cylinder = new THREE.Mesh( cylinderGeometry, cylinderMaterial );
                 tires2.push(cylinder);
             }

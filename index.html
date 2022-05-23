@@ -47,16 +47,28 @@
             const axisHelper = new THREE.AxisHelper(2); //軸の長さ　X：赤、Y：緑、z：青
             scene.add(axisHelper);
 
-            let bgTexture = new THREE.TextureLoader().load("images/universe.jpg");
+            //背景テクスチャ読み込み
+            const bgTexture = new THREE.TextureLoader().load("./images/universe.jpg");
             scene.background = bgTexture;
-     
+            
+            //地球作成
+            const txLoader  = new THREE.TextureLoader();
+            const normalMap = txLoader.load("./earth_tx.png");
+            const geometry = new THREE.SphereBufferGeometry(100, 30, 30);
+            const material = new THREE.MeshPhongMaterial({
+                color:0xffffff,
+                map: normalMap,
+            });
+            const earth = new THREE.Mesh(geometry, material);
+            scene.add(earth);
+
             update();
 
             function update(){
                 renderer.render(scene, camera);
                 requestAnimationFrame(update);
 
-                
+                earth.rotation.y += 0.002;
             }
         }
 

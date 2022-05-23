@@ -47,6 +47,9 @@
             const axisHelper = new THREE.AxisHelper(2); //軸の長さ　X：赤、Y：緑、z：青
             scene.add(axisHelper);
 
+            //背景
+            const bgTexture = new THREE.TextureLoader().load("image/universe.jpg");
+            scene.background = bgTexture;
             
             //地球作成
             const txLoader  = new THREE.TextureLoader();

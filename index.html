@@ -71,7 +71,7 @@
                 map:normalMap2
             });
             const moon = new THREE.Mesh(geometry2,material2);
-            moon.position.set(8,0,0);
+            moon.position.set(15,0,0);
             scene.add(moon);
 
             //太陽作成
@@ -93,8 +93,8 @@
                 requestAnimationFrame(update);
 
                 earth.rotation.y += 0.002;
-                moon.rotation.y += 0.02;
-                sun.rotation.y += 0.02;
+                moon.rotation.y += 0.002;
+                sun.rotation.y += 0.002;
             }
         }
 

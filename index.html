@@ -24,7 +24,7 @@
             const scene = new THREE.Scene();
 
             const camera = new THREE.PerspectiveCamera(45, width / height);
-            camera.position.set(0, 0, 50);
+            camera.position.set(0, 0, 15);
 
             const controls = new THREE.OrbitControls(camera, document.body);
 
@@ -55,7 +55,7 @@
             
             //地球作成
             const txLoader1  = new THREE.TextureLoader();
-            const normalMap1 = txLoader1.load("images/earth_tx.png");
+            const normalMap1 = txLoader1.load("images/earth_tx.jpg");
             const geometry1 = new THREE.SphereGeometry(1, 30, 30);
             const material1 = new THREE.MeshPhongMaterial({
                 color:0xffffff,
@@ -65,10 +65,9 @@
             earth.position.set(0,0,0);
             scene.add(earth);
 
-            
             //月作成
             const txLoader2 = new THREE.TextureLoader();
-            const normalMap2 = txLoader2.load("images/moon_tx.png");
+            const normalMap2 = txLoader2.load("images/moon_tx.jpg");
             const geometry2 = new THREE.SphereGeometry(0.25,30,30);
             const material2 = new THREE.MeshPhongMaterial({
                 color:0xffffff,
@@ -77,6 +76,18 @@
             const moon = new THREE.Mesh(geometry2,material2);
             moon.position.set(2,0,0);
             scene.add(moon);
+
+            //太陽作成
+            const txLoader3 = new THREE.TextureLoader();
+            const normalMap3 = txLoader2.load("images/sun_tx.jpg");
+            const geometry3 = new THREE.SphereGeometry(0.25,30,30);
+            const material3 = new THREE.MeshPhongMaterial({
+                color:0xffffff,
+                map:normalMap3
+            });
+            const sun = new THREE.Mesh(geometry3,material3);
+            moon.position.set(6,0,0);
+            scene.add(sun);
 
             update();
 

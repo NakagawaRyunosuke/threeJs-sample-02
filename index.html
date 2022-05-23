@@ -24,7 +24,7 @@
             const scene = new THREE.Scene();
 
             const camera = new THREE.PerspectiveCamera(45, width / height);
-            camera.position.set(0, 0, 10);
+            camera.position.set(0, 0, 50);
 
             const controls = new THREE.OrbitControls(camera, document.body);
 
@@ -47,8 +47,10 @@
             const axisHelper = new THREE.AxisHelper(2); //軸の長さ　X：赤、Y：緑、z：青
             scene.add(axisHelper);
 
+            //グループ作成
+
             //背景
-            const bgTexture = new THREE.TextureLoader().load("image/universe.jpg");
+            const bgTexture = new THREE.TextureLoader().load("images/universe.jpg");
             scene.background = bgTexture;
             
             //地球作成

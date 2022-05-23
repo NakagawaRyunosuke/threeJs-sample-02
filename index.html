@@ -24,12 +24,12 @@
             const scene = new THREE.Scene();
 
             const camera = new THREE.PerspectiveCamera(45, width / height);
-            camera.position.set(0, 0, 5);
+            camera.position.set(0, 0, 10);
 
             const controls = new THREE.OrbitControls(camera, document.body);
 
             const directionalLightM = new THREE.DirectionalLight(0xffffff, 0.4);
-            directionalLightM.position.set(-30, 30, 30);
+            directionalLightM.position.set(-5, 5, 5);
             directionalLightM.castShadow = true;
 
             scene.add(directionalLightM);
@@ -47,14 +47,6 @@
             const axisHelper = new THREE.AxisHelper(2); //軸の長さ　X：赤、Y：緑、z：青
             scene.add(axisHelper);
 
-            // 箱を作成
-            var boxGeometry = new THREE.BoxGeometry(1, 1, 1);
-            var boxMaterial = new THREE.MeshPhongMaterial({ color: 0xff0000 });
-            var box = new THREE.Mesh(boxGeometry, boxMaterial);
-            box.castShadow = true; //影ができる
-            box.position.set(1,0,0);
-            scene.add(box);
-  
             
             //地球作成
             const txLoader  = new THREE.TextureLoader();
